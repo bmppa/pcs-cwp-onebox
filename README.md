@@ -10,23 +10,33 @@ The contents of this repo allow you to deploy the Prisma Cloud Compute Console a
 
 #### Create VM
 
-`multipass launch -c 2 -d 20G -m 4G -n my-cwp-lab`
+```
+multipass launch -c 2 -d 20G -m 4G -n my-cwp-lab
+```
 
 #### Install multipass-sshfs in the VM
 
-`multipass shell my-cwp-lab`
+```
+multipass shell my-cwp-lab
+```
 
 #### Disbale GlobalProtect and run the following command in the my-cwp-lab virtual machine.
 
-`snap install multipass-sshfs`
+```
+snap install multipass-sshfs
+```
 
 #### Mount the folder where the uncompressed version of the tar file is located into my-cwp-lab.
 
-`multipass mount ~/Documents/LAB/PAN/prisma_cloud_compute_edition_30_00_140 my-cwp-lab`
+```
+multipass mount ~/Documents/LAB/PAN/prisma_cloud_compute_edition_30_00_140 my-cwp-lab
+```
 
 #### SSH back into my-cwp-lab and navigate to the folder you just mounted.
 
-`multipass shell my-console`
+```
+multipass shell my-console
+```
 
 #### Install Docker by running the provided script.
 
@@ -52,7 +62,9 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.26.1+k3s1" sh -
 
 #### Deploy defender
 
-`sudo su`
+```
+sudo su
+```
 
 Go to Manage > Defenders > Manual deploy and select the following options:
 - Method: Orchestrator
@@ -64,4 +76,6 @@ Copy the install script in the right side of the window and past it in your vm. 
 
 #### Deploy an application. For example:
 
-`sudo kubectl run nginx --image=nginx`
+```
+sudo kubectl run nginx --image=nginx
+```
