@@ -46,7 +46,9 @@ Access the console at https://<IP_address_of_your_vm>:8083. Create an account an
 
 Install k3s
 
-`curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.26.1+k3s1" sh -`
+```
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.26.1+k3s1" sh -
+```
 
 #### Deploy defender
 
