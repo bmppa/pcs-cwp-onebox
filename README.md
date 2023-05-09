@@ -1,7 +1,8 @@
 # Self-hosted Prisma Cloud Compute with k3s Cluster
-The contents of this repo allow you to deploy the Prisma Cloud Compute Console and a Prisma Cloud Defender in a virtual machine that you can run on your computer. The idea is to provide a fully self-contained environment that can used to test the Cloud Workload Protection funcionalities of Prisma Cloud Compute.
+The contents of this repo allow you to deploy the Prisma Cloud Compute Console as a Docker container, a Kubernetes cluster using k3s, and a Prisma Cloud Defender, all in a single virtual machine that you can run on your computer. The idea is to provide a fully self-contained environment that you can use to test the Cloud Workload Protection funcionalities of Prisma Cloud.
 
 # Requirements
+- Multipass
 - Linux virtual machine
   - Ubuntu 22.04 with 2 vCPU, 20GB HDD, 4GB RAM
 - Tar file for the Prisma Cloud Compute Edition.
