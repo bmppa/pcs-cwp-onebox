@@ -9,7 +9,7 @@ The contents of this repo allow you to deploy the Prisma Cloud Compute Console a
   - You can download this file from https://support.paloaltonetworks.com
 - Prisma Cloud Compute license
 
-### Download and uncompress the tar file from https://support.paloaltonetworks.com.
+#### Download and uncompress the tar file from https://support.paloaltonetworks.com.
 
 #### Create VM and mount the folder where the uncompressed version of the tar file is located.
 
