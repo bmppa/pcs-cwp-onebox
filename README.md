@@ -4,17 +4,17 @@ The contents of this repo allow you to deploy the Prisma Cloud Compute Console a
 # Requirements
 - Multipass
 - Linux virtual machine
-  - Ubuntu 22.04 with 2 vCPU, 20GB HDD, 4GB RAM
+  - Ubuntu 22.04 with 2 vCPU, 25GB HDD, 4GB RAM
 - Tar file for the Prisma Cloud Compute Edition.
   - You can download this file from https://support.paloaltonetworks.com
 - Prisma Cloud Compute license
 
 ### Download and uncompress the tar file from https://support.paloaltonetworks.com.
 
-### Create VM and mount the folder where the uncompressed version of the tar file is located.
+### Create VM and mount the folder where the uncompressed version of the tar file is located. Note: please disable GlobalProtect before running this command.
 
 ```
-multipass launch -c 2 -d 20G -m 4G -n my-cwp-lab --mount "<absolute_path>/prisma_cloud_compute_edition_30_00_140" 22.04
+multipass launch -c 2 -d 25G -m 4G -n my-cwp-lab --mount "<absolute_path>/prisma_cloud_compute_edition_30_00_140" 22.04
 ```
 
 ### SSH back into my-cwp-lab and navigate to the folder you just mounted.
@@ -23,33 +23,21 @@ multipass launch -c 2 -d 20G -m 4G -n my-cwp-lab --mount "<absolute_path>/prisma
 multipass shell my-cwp-lab
 ```
 
-### Clone this repo to your VM
+### Install k3s
 
 ```
-git clone https://github.com/bmppa/pcs-cwp-onebox.git
-```
-
-### Install Docker by running the provided script.
-
-```
-cd pcs-cwp-onebox
-./install_docker.sh
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.26.1+k3s1" sh -
 ```
 
 ### Deploy the Prisma Cloud Compute console.
 
 ```
 cd /Users/bralmeida/Documents/LAB/PAN/prisma_cloud_compute_edition_30_00_140/
-sudo ./twistlock.sh -s console
+sudo ./linux/twistcli console export kubernetes --service-type LoadBalancer
+kubectl apply -f twistlock_console.yaml
 ```
 
 Access the console at https://<IP_address_of_your_vm>:8083. Create an account and provied a license.
-
-### Install k3s
-
-```
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.26.1+k3s1" sh -
-```
 
 ### Deploy defender
 
